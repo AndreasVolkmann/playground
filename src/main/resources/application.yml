@@ -1,0 +1,10 @@
+logging:
+  level:
+    me.avo.cosmos: TRACE
+
+ScheduledService:
+  scheduleRate: 15000
+
+MessageService:
+  enabled: true
+  scheduleRate: 12000
