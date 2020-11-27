@@ -1,0 +1,17 @@
+<!DOCTYPE aspectj PUBLIC "-//AspectJ//DTD//EN" "https://www.eclipse.org/aspectj/dtd/aspectj.dtd">
+<aspectj>
+
+    <weaver options="-verbose">
+        <!-- only weave classes in our application-specific packages -->
+        <include within="me.avo.cosmos.*"/>
+        <include within="me.avo.cosmos.service.*"/>
+    </weaver>
+
+    <aspects>
+        <!-- weave in just this aspect -->
+        <aspect name="me.avo.cosmos.aspect.FeatureAspect"/>
+        <aspect name="me.avo.cosmos.aspect.TestAspect"/>
+    </aspects>
+
+</aspectj>
+

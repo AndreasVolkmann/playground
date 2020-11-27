@@ -1,8 +1,7 @@
 package me.avo.cosmos.feature
 
-import me.avo.cosmos.platform.feature.FeatureSwitch
 import me.avo.cosmos.platform.feature.FeatureSwitchManager
-import me.avo.cosmos.service.MessageService
+import me.avo.cosmos.platform.feature.MessageServiceFeature
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -17,7 +16,7 @@ internal class FeatureSwitchManagerTest(
 
     @Test
     fun `enabled feature should return true`() {
-        val feature = "${MessageService::class.simpleName}_run"
+        val feature = MessageServiceFeature
 
         val isEnabled = featureSwitchManager.isEnabled(feature)
 

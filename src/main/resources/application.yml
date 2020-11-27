@@ -8,3 +8,8 @@ ScheduledService:
 MessageService:
   enabled: true
   scheduleRate: 12000
+
+
+spring:
+  aop:
+    auto: false

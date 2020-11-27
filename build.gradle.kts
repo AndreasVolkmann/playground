@@ -14,6 +14,7 @@ version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 val javaVersion = java.sourceCompatibility.majorVersion
 val coroutinesVersion = "1.4.1"
+val aspectJVersion = "1.9.6"
 
 repositories {
 	jcenter()
@@ -29,6 +30,7 @@ dependencies {
 	implementation("com.microsoft.azure:azure-cosmosdb-spring-boot-starter:2.3.5")
 //	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${coroutinesVersion}")
 //	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor:${coroutinesVersion}")
+	implementation("org.aspectj:aspectjweaver:$aspectJVersion")
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
 	}
@@ -46,4 +48,12 @@ tasks.withType<KotlinCompile> {
 		jvmTarget = "1.8"
 		useIR = true
 	}
+}
+
+val aspectJPath: String = project.configurations.compileClasspath.get()
+	.find { it.name.startsWith("aspectjweaver") }
+	?.path ?: throw IllegalArgumentException("AspectJ weaver is not found on the compile classpath.")
+
+tasks.withType<Test>().configureEach {
+	jvmArgs("-javaagent:${aspectJPath}")
 }

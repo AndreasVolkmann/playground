@@ -1,5 +1,21 @@
 azure:
   cosmosdb:
-    uri: https://localhost.com:443/
-    key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
+    uri: https://spring-cosmos.documents.azure.com:443/
+    key: TJXQyI93yU2l1g9KxQPo6rEF9pYOqcS1O1d2dlRMLdOzLLt6A4n1FjrYM2c6NAm0xHoNM22uCQGCelzLUxFq5g==
     database: ToDoList
+
+ScheduledService:
+  scheduleRate: 15000
+
+MessageService:
+  enabled: true
+
+SamplePrivate:
+  enabled: false
+
+SamplePublic:
+  enabled: true
+
+spring:
+  aop:
+    auto: false
