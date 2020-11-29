@@ -15,7 +15,3 @@ SamplePrivate:
 
 SamplePublic:
   enabled: true
-
-spring:
-  aop:
-    auto: false

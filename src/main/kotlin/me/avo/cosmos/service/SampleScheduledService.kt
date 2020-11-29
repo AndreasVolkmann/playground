@@ -1,35 +1,28 @@
 package me.avo.cosmos.service
 
 import me.avo.cosmos.platform.feature.FeatureSwitch
-import me.avo.cosmos.platform.scheduler.ScheduledService
+import me.avo.cosmos.platform.feature.SampleServiceFeature
+import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Service
 
 @Service
-class SampleScheduledService : ScheduledService {
+class SampleScheduledService {
 
     var didRun: Boolean = false
 
-    @FeatureSwitch("SampleService")
-    override fun run() {
+    @FeatureSwitch(SampleServiceFeature)
+    @Scheduled(fixedRateString = "\${${SampleServiceFeature}.scheduleRate}")
+    fun run() {
         println("Running service!")
-        didRun = true
-    }
-
-    fun reset() {
-        didRun = false
-    }
-
-    fun runPrivate() {
-        privateRun()
-    }
-
-    @FeatureSwitch("SamplePrivate")
-    private fun privateRun() {
         didRun = true
     }
 
     @FeatureSwitch("SamplePublic")
     fun publicRun() {
         didRun = true
+    }
+
+    fun reset() {
+        didRun = false
     }
 }

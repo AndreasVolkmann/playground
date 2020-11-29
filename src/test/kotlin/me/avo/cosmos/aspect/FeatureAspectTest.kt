@@ -21,19 +21,15 @@ internal class FeatureAspectTest(
         sampleScheduledService.reset()
     }
 
-    @Test fun `disabled feature should not execute`() {
+    @Test
+    fun `disabled feature should not execute`() {
         sampleScheduledService.run()
         expectThat(sampleScheduledService.didRun).isFalse()
     }
 
-    @Test fun `private disabled feature should not execute`() {
-        sampleScheduledService.runPrivate()
-        expectThat(sampleScheduledService.didRun).isFalse()
-    }
-
-    @Test fun `public enabled feature should execute`() {
+    @Test
+    fun `public enabled feature should execute`() {
         sampleScheduledService.publicRun()
         expectThat(sampleScheduledService.didRun).isTrue()
     }
-
 }
